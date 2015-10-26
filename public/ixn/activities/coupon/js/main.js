@@ -7,13 +7,13 @@ requirejs.config({
         'vendor/jquery.min': {
             exports: '$'
         },
-		'Inbox': {
+		'Coupon': {
 			deps: ['vendor/jquery.min', 'vendor/postmonger']
 		}
     }
 });
 
-requirejs( ['vendor/jquery.min', 'Inbox'], function( $, Inbox ) {
+requirejs( ['vendor/jquery.min', 'Coupon'], function( $, Coupon ) {
 	//console.log( 'REQUIRE LOADED' );
 });
 
