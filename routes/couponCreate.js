@@ -134,13 +134,20 @@ function createCoupon(req, res)
 			method: "POST",
 			headers: {
 			"content-type": "text/xml",  // <--Very important!!!
-			},
-			body: post_body
-		}, function (error, response, body){
-		console.log(response);
-	});
+			}
+		}, function (error, response, body)
+		{
+			if (!error && response.statusCode == 200) {				
+				console.log('onEND Coupon Create:', response.statusCode);
+				res.send( 200, {"status": 0} );
+			} else {
+				console.log('onEND fail:', response.statusCode);
+				res.send(response.statusCode);
+			}		
+		}
+	);
 	
-	request.write();
+	request.write(post_body);
 	request.end();
 }
 
