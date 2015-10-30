@@ -92,10 +92,10 @@ function createCoupon(req, res)
 	var apiUrl = oArgs.apiUrl;
 	
 	var post_url = "http://uat.storellet.com/storellet/api/pizzahut/coupon";
-	// TODO - add PROD url
+	
 	if(apiUrl == "PROD")
 	{
-		
+		// TODO - add PROD url
 	}
 		
 	console.log('COUPON for ', contactKey);
@@ -105,30 +105,25 @@ function createCoupon(req, res)
 	post_body += '<fbp:eCouponType>' + couponType + '</fbp:eCouponType>';
 	post_body += '<fbp:count>' + couponCount + '</fbp:count>';
 	post_body += '</fbp:eCouponCreate></soapenv:Body></soapenv:Envelope>';
-		
+	
+	var options = {
+			headers: {
+			"content-type": "text/xml",  // <--Very important!!!
+			},
+			body: post_body
+		};
+	
 	console.log('post body:', post_body);
 
 	var request = require('request');
 	
 	request.post(		
 		post_url,
-		{
-			headers: {
-			"content-type": "text/xml",  // <--Very important!!!
-			},
-			body: post_body
-		},
+		post_body,
 		function (error, response, body) 
 		{
-			var data = '';
-			var error = '';
-				
-			response.on( 'data' , function( chunk ) {
-				data += chunk;
-			});
-			
 			if (!error && response.statusCode == 200) {				
-				console.log('onEND Coupon Create:', response.statusCode, ", data:", data);
+				console.log('onEND Coupon Create:', response.statusCode, ", response body:", body);
 				res.send( 200, {"status": 0} );
 			} else {
 				console.log('onEND fail:', response.statusCode);
