@@ -76,13 +76,12 @@ function createCoupon(req, res)
 	}
 	
 	var contactKey = req.body.keyValue;
-
-	// TODO - remove test data
 	if(!contactKey)
 	{
 		oArgs = {
 			"couponType": "73",
-			"couponCount": "1"
+			"couponCount": "1",
+			"apiUrl", "UAT"
 		};
 		contactKey = "927746965857";
 	}
@@ -111,18 +110,14 @@ function createCoupon(req, res)
 
 	var request = require('request');
 	request.post(		
-		
-		{ 
-			url: post_url,
-			headers:{
-				'Content-Type' : 'text/xml'
-			},
-			body: post_body
+		post_url,
+		{
+			form: post_body
 		},
 		function (error, response, body) 
 		{
 			if (!error && response.statusCode == 200) {				
-				console.log('onEND Coupon Create:', response.statusCode, data);
+				console.log('onEND Coupon Create:', response.statusCode);
 				res.send( 200, {"status": 0} );
 			} else {
 				console.log('onEND fail:', response.statusCode);
