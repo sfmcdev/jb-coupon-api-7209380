@@ -109,11 +109,14 @@ function createCoupon(req, res)
 	console.log('post body:', post_body);
 
 	var request = require('request');
-	/*
+	
 	request.post(		
 		post_url,
 		{
-			form: post_body
+			headers: {
+			"content-type": "text/xml",  // <--Very important!!!
+			},
+			body: post_body
 		},
 		function (error, response, body) 
 		{
@@ -126,8 +129,8 @@ function createCoupon(req, res)
 			}		
 		}
 	);
-	*/
-	
+
+		/*
 	request(
 		{
 			url: post_url,
@@ -149,5 +152,6 @@ function createCoupon(req, res)
 	
 	request.write(post_body);
 	request.end();
+	*/
 }
 
