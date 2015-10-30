@@ -14,7 +14,8 @@ define( function( require ) {
     $(window).ready(onRender);
 
     connection.on('initActivity', function(payload) {
-        var couponType;
+        var apiUrl;
+		var couponType;
 		var couponCount;
 
         if (payload) {
@@ -30,6 +31,7 @@ define( function( require ) {
 				}
 			}
 			//oArgs.priority will contain a value if this activity has already been configured:
+			apiUrl = oArgs.apiUrl || toJbPayload['configurationArguments'].defaults.apiUrl;
 			couponType = oArgs.couponType || toJbPayload['configurationArguments'].defaults.couponType;
 			couponCount = oArgs.couponCount || toJbPayload['configurationArguments'].defaults.couponCount;
         }
@@ -38,6 +40,7 @@ define( function( require ) {
 			$('#version').html('Version: ' + data.version);
 		});                
 
+		$('#selectURLType').find('option[value='+ apiUrl +']').attr('selected', 'selected');		
         $('#couponType').val(couponType);
 		$('#couponCount').val(couponCount);
 		
@@ -96,6 +99,11 @@ define( function( require ) {
         }
     };
 
+	function getApiUrl()
+	{
+		return $('#selectURLType').find('option:selected').attr('value').trim();
+	};
+	
     function getCouponType()
 	{
 		var str = $('#couponType').val();
@@ -118,9 +126,11 @@ define( function( require ) {
         var couponType = getCouponType();
         var couponCount = getCouponCount();
 		
+		toJbPayload['arguments'].execute.inArguments.push({"apiUrl": apiUrl});
         toJbPayload['arguments'].execute.inArguments.push({"couponType": couponType});
 		toJbPayload['arguments'].execute.inArguments.push({"couponCount": couponCount});
 		
+		toJbPayload['configurationArguments'].apiUrl = apiUrl;
 		toJbPayload['configurationArguments'].couponType = couponType;
 		toJbPayload['configurationArguments'].couponCount = couponCount;
 		

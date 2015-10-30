@@ -12,25 +12,28 @@
 <body>
 	<div id="step1" class="step">
 		<p><small id="version"></small></p>			
-		<h2>Coupon Parameters</h2>
-		<table>
-			<tr>
-				<td>Type</td>
-				<td><input id="couponType" type="number"/></td>
-			</tr>
-			<tr>
-				<td>Count</td>
-				<td><input id="couponCount" type="number" /></td>
-			</tr>
-		</table>
+		<form name="frm1">
+			<h2>API URL</h2>
+			<select id="selectURLType">
+				<option value="type_uat">UAT</option>
+				<option value="type_prod">PROD</option>
+			</select>	
+		
+			<h2>Coupon Parameters</h2>
+			<table>
+				<tr>
+					<td>Type</td>
+					<td><input id="couponType" type="number"/></td>
+				</tr>
+				<tr>
+					<td>Count</td>
+					<td><input id="couponCount" type="number" /></td>
+				</tr>
+			</table>
+		</form>
 	</div>
 	<div id="step2" class="step">
 		<p>Please review your settings.</p>
-		<!--
-		Value Tier: <span id="showValueTier"></span><br />
-		Type: <span id="showType"></span><br />
-		Bonus: <span id="showBonus"></span><br />
-		-->
 	</div>			
 </body>
 </html>
