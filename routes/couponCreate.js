@@ -128,6 +128,8 @@ function createCoupon(req, res)
 	);
 	*/
 	
+	res.send( 200, {"status": 0} );
+	return;
 	request(
 		{
 			url: post_url,
