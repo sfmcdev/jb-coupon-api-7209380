@@ -60,9 +60,16 @@ function createCoupon(req, res)
 {
 	//merge the array of objects for easy access in code.
 	var aArgs = req.body.inArguments;
-	console.log( aArgs );
+	console.log( "aArgs:" + aArgs );
 	var oArgs = {};
-	for (var i=0; i<aArgs.length; i++) {  
+	
+	var iLen = 0;
+	if(aArgs != undefined)
+	{
+		iLen = aArgs.length;
+	}
+	for (var i=0; i<iLen; i++) 
+	{ 
 		for (var key in aArgs[i]) { 
 			oArgs[key] = aArgs[i][key]; 
 		}
@@ -114,7 +121,7 @@ function createCoupon(req, res)
 		function (error, response, body) 
 		{
 			if (!error && response.statusCode == 200) {				
-				console.log('onEND inbox Create:', response.statusCode, data);
+				console.log('onEND Coupon Create:', response.statusCode, data);
 				res.send( 200, {"status": 0} );
 			} else {
 				console.log('onEND fail:', response.statusCode);
