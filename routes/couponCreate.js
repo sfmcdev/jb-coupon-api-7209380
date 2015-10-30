@@ -83,7 +83,8 @@ function createCoupon(req, res)
 			"couponCount": "1",
 			"apiUrl": "UAT"
 		};
-		contactKey = "927746965857";
+		//contactKey = "927746965857";
+		contactKey = "0";
 	}
 	
 	// these values come from the custom activity form inputs
@@ -119,12 +120,17 @@ function createCoupon(req, res)
 	
 	request.post(		
 		post_url,
-		post_body,
+		options,
 		function (error, response, body) 
 		{
 			if (!error && response.statusCode == 200) {				
 				console.log('onEND Coupon Create:', response.statusCode, ", response body:", body);
-				res.send( 200, {"status": 0} );
+				res.send( 200, 
+					{
+						"response": body,
+						"status" : 0
+					} 
+				);
 			} else {
 				console.log('onEND fail:', response.statusCode);
 				res.send(response.statusCode);
