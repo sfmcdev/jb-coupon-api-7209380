@@ -90,6 +90,7 @@ function createCoupon(req, res)
 	// these values come from the custom activity form inputs
 	var couponType = oArgs.couponType;
 	var couponCount = oArgs.couponCount;	
+	var apiUrl = oArgs.apiUrl;
 	
 	var post_url = "http://uat.storellet.com/storellet/api/pizzahut/coupon";
 	// TODO - add PROD url
