@@ -81,7 +81,7 @@ function createCoupon(req, res)
 		oArgs = {
 			"couponType": "73",
 			"couponCount": "1",
-			"apiUrl", "UAT"
+			"apiUrl": "UAT"
 		};
 		contactKey = "927746965857";
 	}
@@ -128,8 +128,6 @@ function createCoupon(req, res)
 	);
 	*/
 	
-	res.send( 200, {"status": 0} );
-	return;
 	request(
 		{
 			url: post_url,
