@@ -111,10 +111,10 @@ function createCoupon(req, res)
 
 	var request = require('request');
 	request.post(		
-		post_url,
+		
 		{ 
-			headers:
-			{
+			url: post_url,
+			headers:{
 				'Content-Type' : 'text/xml'
 			},
 			body: post_body
