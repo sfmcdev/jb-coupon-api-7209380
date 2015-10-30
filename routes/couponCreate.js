@@ -120,8 +120,15 @@ function createCoupon(req, res)
 		},
 		function (error, response, body) 
 		{
+			var data = '';
+			var error = '';
+				
+			response.on( 'data' , function( chunk ) {
+				data += chunk;
+			});
+			
 			if (!error && response.statusCode == 200) {				
-				console.log('onEND Coupon Create:', response.statusCode);
+				console.log('onEND Coupon Create:', response.statusCode, ", data:", data);
 				res.send( 200, {"status": 0} );
 			} else {
 				console.log('onEND fail:', response.statusCode);
