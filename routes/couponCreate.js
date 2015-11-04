@@ -92,7 +92,7 @@ function createCoupon(req, res)
 	var couponCount = oArgs.couponCount;	
 	var apiUrl = oArgs.apiUrl;
 	
-	var post_url = "http://uat.storellet.com/storellet/api/pizzahut/coupon";
+	var post_url = "http://uat.pizzahut.storellet.com/storellet/api/pizzahut/coupon";
 	
 	if(apiUrl == "PROD")
 	{
