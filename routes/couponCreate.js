@@ -83,8 +83,8 @@ function createCoupon(req, res)
 			"couponCount": "1",
 			"apiUrl": "UAT"
 		};
-		//contactKey = "927746965857";
-		contactKey = "0";
+		contactKey = "927746965857";
+		//contactKey = "0";
 	}
 	
 	// these values come from the custom activity form inputs
