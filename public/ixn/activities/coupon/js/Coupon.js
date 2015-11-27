@@ -121,8 +121,9 @@ define( function( require ) {
 	};
 	
 
-    function save() {
-
+    function save() 
+	{
+		var apiUrl = getApiUrl();
         var couponType = getCouponType();
         var couponCount = getCouponCount();
 		
